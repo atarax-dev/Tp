@@ -1,8 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Des explications</title>
+    <link rel="stylesheet" href="/static/css/explanations.css">
+
 </head>
 <body>
 <div class="explanations-feed">
@@ -19,8 +22,8 @@
     <br>Tout s’installe, c’est parfait. Je redémarre la machine virtuelle et je me retrouve avec
     la ligne de commande, prête à se plier à tous mes désirs (enfin j’imagine).
     <br>Sauf que je me sens un peu comme un singe qui trouve un appareil photo, je ressens que
-    quelque chose doit être possible mais que c’est pas dans l’heure qui vient que je vais devenir
-    un grand photographe...</p>
+    quelque chose doit être possible, mais que ce n'est pas dans l’heure qui vient que je vais
+    devenir un grand photographe...</p>
 <p>En bon singe têtu, je me dis : je vais créer un dossier pour le TP, j’installe pip et django
     juste après, je crée mon projet comme je le ferais sur ma machine via gitbash par exemple
     <br>Je fais tout ça, ça se fait bien, je lance la migration de base et je run le serveur.
@@ -56,8 +59,8 @@
     <br>Je repars déçu, sans la VM, mais j’essaye de positiver et je me dis que je vous
     expliquerais comment et sur quoi j’ai buté. C’est chose faite</p>
 <p>Pour la partie développement : évidemment réaliser une vue qui affiche une phrase, c’est le
-    truc facile, alors je voulais implémenter une petite fonction supplémentaire pour pas que vous
-    vous disiez que je suis un incompétent doublé d’une feignasse.
+    truc facile, alors je voulais implémenter une petite fonction supplémentaire (ça reste facile
+    certes) pour pas que vous vous disiez que je suis un incompétent doublé d’une feignasse.
     <br>J’avais vu sur un post de freecodecamp récemment un petit script pour checker le statut
     d’un serveur, savoir s’il est en ligne, ou non. Je trouvais ça sympa alors je l’ai intégré à la
     suite de ce texte si long.
@@ -72,7 +75,12 @@
     <br>Puis j’ai intégré ça dans la vue, après ces explications</p>
 <p>Au point où j’en suis, il est 13h passée et j’aimerais professionnaliser le plus possible le
     rendu, comme demandé. Un petit commit, je mange et je m’y mets. </p>
-
+    <p> Bon j'ai fait très simple et j'ai simplement centré les éléments, ajouté des marges par-ci,
+    par-la pour un affichage plus aéré et plus lisible. J'ai des choses qui étaient déjà prévues
+    cette après-midi et le temps et l'expérience pour élaborer quelque chose de plus poussé va
+        me manquer, j'espère que vous ne rejetterez pas votre repas de midi devant ce rendu,
+        c'est vrai, plutôt simpliste. J'ai tout de même pris le temps de faire un petit script js
+    qui va colorer la réponse du check du statut en rouge ou en vert selon le résultat.</p>
 
 </div>
 <div class="bonus-feed" id="bonus">
@@ -85,11 +93,42 @@
         </div>
     </form>
     {% if result_message %}
-    <div class="result-message">
-        <p>{{result_message}}</p>
+    <div>
+        <p id="result-message">{{result_message}}</p>
     </div>
     {% endif %}
 </div>
+<div class="conclusion-feed">
+    <h3>Une <del>petite</del> conclusion</h3>
+    <p>Au gré des obstacles que j'ai rencontrés sur cette petite démonstration et des lectures sur
+        ce que cela concernait et un peu plus, je me suis rendu compte de plusieurs choses:
+        <br>-J'ai des lacunes sur la connaissance des réseaux et de comment ils fonctionnent
+        réellement  (les serveurs, les proxys, les ports, etc); Je suis tombé sur beaucoup de
+        fils de discussions concernant tout ça en cherchant comment héberger mon app sur une VM
+        Ubuntu Server et je mentirais si je disais que j'avais bien tout compris de quoi ces
+        personnes discutaient. Ce n'est malheureusement pas un sujet abordé pleinement dans le
+        parcours que j'ai effectué avec OpenClassrooms
+        <br>Cependant cela m'a donné envie de m'y connaître en réseaux et infrastructures, j'ai
+        beaucoup de choses à apprendre
+        <br>-Je pense qu'il serait bon que je passe une de mes machines sous Linux pour travailler
+    la ligne de commande, m'habituer à une configuration différente de la mienne et pouvoir
+        m'adapter aux outils sous Linux que je sache parfaitement naviguer dans le système et
+    faire ce que j'ai envie de faire avec
+        <br>-En travaillant sur le rendu, je confirme ma préférence pour le back-end, je manque
+    d'outils et d'expérience pour vraiment prétendre à créer des UI professionnelles</p>
+    <p>Au delà de tout ça, j'aimerais que vous sachiez que l'exercice m'a quand même amusé, et que
+        même s'il y a peu de chances que le résultat vous convienne, je serais toutefois très
+    intéressé de vous rejoindre. Gilbert MOISIO a dit pendant notre échange "Nous on vend des
+    spécialistes au client". Moi j'adorerais devenir un spécialiste dans votre domaine et gagner en
+    compétences sous le regard d'un développeur expérimenté. Si vous avez les ressources et le
+    temps pour faire d'un junior volontaire un spécialiste, je suis prêt à m'investir pour vous</p>
+    <p>Quoiqu'il arrive je vous remercie tous les trois pour le temps que vous avez passé pour moi,
+    à échanger hier, et à me lire aujourdhui :)</p>
+    <p>Cordialement</p>
+    <p>VERNET Audric</p>
 
+
+</div>
+<script src="static/js/explanations.js"></script>
 </body>
 </html>
