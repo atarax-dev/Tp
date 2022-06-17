@@ -5,6 +5,91 @@
     <title>Des explications</title>
 </head>
 <body>
+<div class="explanations-feed">
+    <h2>Quelques explications concernant ce développement</h2>
+    <p>Je vais détailler ici ma démarche concernant cet exercice.</p>
+<p>Hier, j’ai pu commencer à travailler sur ce TP vers 21h30. Je n’avais jamais travaillé avec une
+    machine virtuelle, et je ne me suis servi de distributions Linux qu’à de rares occasions dans
+    ma vie (Debian pour ressusciter des vieilles machines et bidouiller un peu par ex..).
+    Qu’a cela ne tienne, on va essayer.</p>
+<p>La première étape :<br>
+-Monter une VM Linux (Ubuntu Server par exemple)
+    <br>Je télécharge rapidement VirtualBox, l’iso de la dernière version LTS d’Ubuntu Server,
+    et c’est parti.
+    <br>Tout s’installe, c’est parfait. Je redémarre la machine virtuelle et je me retrouve avec
+    la ligne de commande, prête à se plier à tous mes désirs (enfin j’imagine).
+    <br>Sauf que je me sens un peu comme un singe qui trouve un appareil photo, je ressens que
+    quelque chose doit être possible mais que c’est pas dans l’heure qui vient que je vais devenir
+    un grand photographe...</p>
+<p>En bon singe têtu, je me dis : je vais créer un dossier pour le TP, j’installe pip et django
+    juste après, je crée mon projet comme je le ferais sur ma machine via gitbash par exemple
+    <br>Je fais tout ça, ça se fait bien, je lance la migration de base et je run le serveur.
+    Yes ça marche. Cool, sauf que :
+    <br>- J’ignore comment accéder au rendu vu qu’il n’y a pas d’interface et que l’os est isolé de
+    mon système hôte finalement : je me perds sur internet pour essayer de faire une redirection
+    des ports, je me rends compte que je suis perdu et je décide de réfléchir à ce qu’il se
+    passerait si par miracle j’arrivais à avoir le rendu sur la machine hôte. Parce qu’avoir le
+    rendu de base de Django qui dit qu’il est bien installé, on s’en fout un peu en fait.
+    Après il faudra que je bosse sur les fichiers pour vous servir quelque chose quand même.
+    <br>Bon, ça fait beaucoup d’un coup et j’abdique sur cette partie compte tenu du délai,
+    je décide de le développer sans la VM, avec un environnement virtuel sur ma machine comme je
+    l’ai toujours fait jusque là.</p>
+<p>Là ça se passe comme d’habitude (donc bien) sauf pour un truc, le serveur de développement de
+    Django ne veut pas trouver mon fichier ‘index.css’ dans le dossier static, alors que pour
+    d’autres projets avec une architecture et des réglages identiques, ça marchait très bien.
+    Un grand mystère que je mettrais 45 minutes à contourner grâce à stackoverflow,
+    en ajoutant un « STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),] » dans mes settings,
+    quand bien même la STATIC_URL était déjà correctement indiquée à Django. J’ai pas compris
+    pourquoi j’ai eu besoin de rajouter ça par rapport à avant, mais soit, au moins ça fonctionne.
+    <br>Bref, ça y est je vais pouvoir styliser mes pages.. il est tard à ce moment-là (genre 2h du
+    matin), du coup je vais me coucher et je reprends le travail vers 9h30</p>
+<p>A ce moment-là, j’ai envie de retenter la VM en prenant une version avec interface : je
+    télécharge la version desktop d’ubuntu et je l’installe. Je trouve ça dommage parce qu’elle
+    fait 2Go de plus que la version server et je me doute qu’on fait pas ça dans les bonnes
+    pratiques pour des raisons évidentes. De toute façon je suis vite stoppé dans mon élan puisque
+    même si l’installation se passe nickel, une fois terminée, la machine ne renvoie qu’un écran
+    noir après l’écran du démarrage d’Ubuntu.
+    <br>Il y a donc un problème quelque part et je me dis que décidément la VM se refuse à moi.
+    Il me faudrait du temps pour reprendre l’install tranquillement et voir ce qui ne va pas. Mais
+    du temps j’en ai pas énormément surtout que j’aimerais me concentrer sur autre chose que la
+    mise en place d’un environnement.
+    <br>Je repars déçu, sans la VM, mais j’essaye de positiver et je me dis que je vous
+    expliquerais comment et sur quoi j’ai buté. C’est chose faite</p>
+<p>Pour la partie développement : évidemment réaliser une vue qui affiche une phrase, c’est le
+    truc facile, alors je voulais implémenter une petite fonction supplémentaire pour pas que vous
+    vous disiez que je suis un incompétent doublé d’une feignasse.
+    <br>J’avais vu sur un post de freecodecamp récemment un petit script pour checker le statut
+    d’un serveur, savoir s’il est en ligne, ou non. Je trouvais ça sympa alors je l’ai intégré à la
+    suite de ce texte si long.
+    <br>Pour être tout à fait transparent, voici le lien du repo où se trouve le petit script
+    d’origine :
+    <a href="github.com/larymak/Python-project-Scripts/blob/main/ServerChecker/serverChecker.py">
+        Script sur GitHub</a>
+    <br>Il utilise la bibliothèque socket, qui de ce que j’ai compris permet entre autres de créer
+    un « connecteur » et in-fine de vérifier s'il fonctionne.
+    <br>J’ai à peine modifié le script en rajoutant un nommage des exceptions (le except était
+    tout nu) et un print de l’erreur capturée, dans le back.
+    <br>Puis j’ai intégré ça dans la vue, après ces explications</p>
+<p>Au point où j’en suis, il est 13h passée et j’aimerais professionnaliser le plus possible le
+    rendu, comme demandé. Un petit commit, je mange et je m’y mets. </p>
+
+
+</div>
+<div class="bonus-feed" id="bonus">
+    <p>La fonction bonus pour tester la réponse d'un serveur:</p>
+    <form action="/explanations#bonus" method="POST">
+        {% csrf_token %}
+        <input class="site-input" type="text" name="site-input" placeholder="lechomdu.herokuapp.com">
+        <div class="submit-div">
+            <input class="submit-btn" type="submit" value="Vérifier la réponse">
+        </div>
+    </form>
+    {% if result_message %}
+    <div class="result-message">
+        <p>{{result_message}}</p>
+    </div>
+    {% endif %}
+</div>
 
 </body>
 </html>
