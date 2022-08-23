@@ -11,8 +11,8 @@ COPY . .
 # now run the command to install dependencies from requirements file
 RUN pip install --no-cache-dir -r requirements.txt
 
-# expose the port 8800
-EXPOSE 8800
+# expose the port 8000
+EXPOSE 8000
 
 # everytime container is started, run this command
-CMD python manage.py runserver 192.168.1.21:8800
+CMD python manage.py migrate ; python manage.py runserver 0.0.0.0:8000
